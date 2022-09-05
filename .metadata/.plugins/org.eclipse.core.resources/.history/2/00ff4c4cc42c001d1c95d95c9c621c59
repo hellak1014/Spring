@@ -1,0 +1,10 @@
+package com.springproj.ex03;
+
+public class SonySpeaker {
+	
+	public SonySpeaker() {
+		//생성자 특징. 클래스와 동일한 이름. 매서드와 비슷한 외형이지만 매서드가 다름. 매서드는 반환명이 있어야 하지만 
+		//얘는 반환명이 없다. 그리고 호출 목적도 아니다. 
+	}
+
+}

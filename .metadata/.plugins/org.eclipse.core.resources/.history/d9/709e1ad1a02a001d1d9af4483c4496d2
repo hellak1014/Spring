@@ -1,0 +1,26 @@
+package com.springproj.ex03;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.GenericXmlApplicationContext;
+
+public class TvUser {
+
+	public static void main(String[] args) {
+		//TV tv = new LgTV(); //변수 선언 이후 메모리 할당(객체 만들어줘) 요청. tv는 부모.
+		
+		ApplicationContext factory = new GenericXmlApplicationContext("applicationContext.xml"); 
+		//주소값 가져와서 넣을 변수 설정
+		//메모리 할당 (객체 만들어줘) 근데 이제 스프링 참고해서.
+		//스프링이 할 일을 얻어 갈 수 있도록 정보를 할당. 
+		
+		
+		factory.getBean("tv");
+		tv.powerOn();
+		tv.volumeUp();
+		tv.volumeDown();
+		tv.powerOff();
+		
+		
+	}
+
+}

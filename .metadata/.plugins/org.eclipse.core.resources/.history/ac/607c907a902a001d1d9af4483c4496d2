@@ -1,0 +1,15 @@
+package com.springproj.ex01;
+
+public class TvUser {
+
+	public static void main(String[] args) {
+		
+		LGTV lgtv;
+		lgtv = new LGTV(); //lgtv 찾아가서 크기를 계산해 메모리를 할당해줘
+					// 시작 주소값을 가지고 와있음. 보관할 용도의 메모리 공간을 만들어야 한다.
+		
+		lgtv.turnOn();
+		
+	}
+
+}
