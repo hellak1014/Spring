@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="collectionBean" class="ex02.collection.set.CollectionBean">
+		<property name="addressList">
+			<set>
+				<value>서울시 종로구 이화동</value>
+				<value>서울시 마포구 합정동</value>
+				<value>서울시 강남구 서초동</value>
+				<value>서울시 마포구 합정동</value>
+			</set>
+		</property>
+	<!-- 리스트의 데이터를 setter를 통해 전달 받을때 -->
+	</bean>
+</beans>
