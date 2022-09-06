@@ -2,5 +2,6 @@
 <aop-reference-model>
 <aop-project name="ch02_DI"/>
 <aop-project name="ch01_Webapp"/>
+<aop-project name="ch04_DI_Annotation"/>
 <aop-project name="ch03_DI_Collection"/>
 </aop-reference-model>

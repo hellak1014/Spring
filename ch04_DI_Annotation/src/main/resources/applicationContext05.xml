@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<context:component-scan base-package="ex05.annotation.x"></context:component-scan>
+	
+	<bean class="ex05.annotation.x.SonySpeaker"></bean> 
+	<!-- 설정파일에서 apple과 sony를 바꿔가며 설정. 선택지를 고르는건 bean에서. 객체를 부르는건 annotation에서.-->
+	
+</beans>

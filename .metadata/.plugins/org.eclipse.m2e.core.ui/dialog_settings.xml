@@ -6,6 +6,8 @@
 	</section>
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="C:\workspaces\spring\src\ch05_Proj_Layer_BusinessComponent"/>
+			<item value="C:\workspaces\spring\src\ch04_DI_Annotation"/>
 			<item value="C:\workspaces\spring\src\ch03_DI_Collection"/>
 			<item value="C:\workspaces\spring\src\ch02_DI"/>
 		</list>
