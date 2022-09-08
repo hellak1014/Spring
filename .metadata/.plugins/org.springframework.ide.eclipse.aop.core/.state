@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <aop-reference-model>
+<aop-project name="ch06_AOP"/>
 <aop-project name="ch02_DI"/>
 <aop-project name="ch01_Webapp"/>
 <aop-project name="ch04_DI_Annotation"/>
 <aop-project name="ch03_DI_Collection"/>
+<aop-project name="ch05_Proj_Layer_BusinessComponent"/>
 </aop-reference-model>
