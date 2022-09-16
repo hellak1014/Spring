@@ -3,12 +3,49 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 
 	<context:component-scan base-package="com.springproj.biz"/>
 	
 	<bean id ="log" class="com.springproj.biz.common.LogAdvice"/>
 	<!-- <bean id ="log" class="com.springproj.biz.common.Log4jAdvice"/> -->
+	
+	
+	<bean id = "beforeAdvice" class="com.springproj.biz.common.BeforeAdvice"></bean>
+	
+	<!-- 이거 기반으로 보고 이해 후 다른 곳에서도 설정 -->
+	<aop:config>
+		<aop:pointcut id="implPointcut" 
+					expression="execution(* com.springproj.biz.board..*Impl.*(..))" />
+		<!-- execution 함수 사용. 반환형 타입이 온다. *(리턴 상관없음), void(리턴값 없음), !void(리턴값 반드시 있음) -->
+		<!-- 위치가 오고, 그 다음에 자료형이 온다. *Impl로 끝나는 모든 클래스 들이 대상이다. *는 모든걸 의미함. -->
+		<!-- board폴더까지 와서 그 하위에서 Impl로 끝나는 모든 클래스에 적용한다. 여기선 BoardServiceImpl이 대상. -->
+		<!-- 매서드를 넣고 싶은 경우, *(넣을 매개변수)를 넣는다. 이 경우, 안에 있는 모든 매개변수에 간섭한다.--> 
+		<!-- 한개만 있는 매개변수에만 간섭하고 싶을 경우 *(*). 몇개를 받던 첫 자료형이 정해져 있는 경우, *(자료형, ..) --> 
+		<!-- 특정 메소드만 선택하고 싶을 경우, 메소드특징*(..) 식으로 한다.  -->
+		
+		<aop:aspect ref="beforeAdvice">
+			<aop:before pointcut-ref="implPointcut" method="beforeLog"/>
+		<!-- pointcut에 적용할 advice(공통기능)을 넣는다. -->
+		<!-- 이 경우, 위에 적용된 bean의 이름. 객체(참조변수. 레퍼런스변수)를 적용하면 된다 -->
+		<!-- weaving을 적용할 시점 5개중 하나를 설정해야 한다. 그리고 어떤 메서드를 실행할지 알려줘야 함.-->
+		<!-- 이 경우, BeforeAdvice에 있는 매서드를 적는다. -->
+		<!-- 그리고 적용할 포인트컷을 설정. 어떤 pointcut에 어떤 advice를 언제(before)적용 할것인가.-->
+		</aop:aspect>
+		
+	</aop:config>
+	
+	
+	<bean id="afterReturningAdvice" class="com.springproj.biz.common.AfterReturningAdvice"></bean>
+	<aop:config>
+		<aop:pointcut expression="getPointcut" 
+						id="execution(* com.springproj.biz.board..*Impl.get*(..))"/>
+			<aop:aspect ref="afterReturningAdvice">
+				<aop:after-returning pointcut-ref="getPointcut" method="afterlog" returning="returnObj"/>
+				</aop:aspect>
+	</aop:config>
 
 </beans>

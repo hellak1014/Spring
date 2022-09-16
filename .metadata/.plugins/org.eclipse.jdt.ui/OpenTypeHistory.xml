@@ -1,2 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<typeInfoHistroy/>
+<typeInfoHistroy>
+    <typeInfo handle="=ch11_SpringMVC_Board/C:\/Users\/hella\/.m2\/repository\/org\/springframework\/spring-webmvc\/5.2.22.RELEASE\/spring-webmvc-5.2.22.RELEASE.jar=/maven.pomderived=/true=/=/org.eclipse.jst.component.archivename=/spring-webmvc-5.2.22.RELEASE.jar=/=/maven.groupId=/org.springframework=/=/maven.artifactId=/spring-webmvc=/=/maven.version=/5.2.22.RELEASE=/=/maven.scope=/compile=/=/maven.pomderived=/true=/=/org.eclipse.jst.component.dependency=/\/WEB-INF\/lib=/&lt;org.springframework.web.servlet.mvc(Controller.class[Controller" modifiers="1537" timestamp="1662084531867"/>
+</typeInfoHistroy>

@@ -29,7 +29,7 @@ public class BoardDAO { //DAO (Data Access Object)
 	// CRUD 기능의 매서드 구현. 
 	// 글 등록 (insert문) [Create]
 	public void insertBoard(BoardVO vo) {
-		log.printLog(">= insertBoard() =<");
+		log.printLogging(">= insertBoard() =<");
 		
 		/* 연결은 반복적인 코드이기 때문에 따로 util 파일로 뺌. */
 		
@@ -69,7 +69,7 @@ public class BoardDAO { //DAO (Data Access Object)
 	
 	// 목록보기 (select문) [Read]
 	public void getBoard(int seq) {
-		log.printLog(">= getBoard() =<");
+		log.printLogging(">= getBoard() =<");
 		
 		conn = JDBCUtil.getConnection();
 		
@@ -86,7 +86,7 @@ public class BoardDAO { //DAO (Data Access Object)
 	
 	// 글 수정 (update문) [Update]
 	public void updateBoard(BoardVO vo) {
-		log.printLog(">= updateBoard() =<");
+		log.printLogging(">= updateBoard() =<");
 		
 		conn = JDBCUtil.getConnection();
 		 
@@ -123,7 +123,7 @@ public class BoardDAO { //DAO (Data Access Object)
 	
 	// 글 삭제 (delete문) [Delete]
 	public void deleteBoard(int seq) {
-		log.printLog(">= deleteBoard() =<");
+		log.printLogging(">= deleteBoard() =<");
 		
 	}
 	

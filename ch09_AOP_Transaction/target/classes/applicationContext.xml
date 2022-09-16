@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+	<context:component-scan base-package="com.springproj.biz"/>
+	
+	
+	<!--  AOP annotation을 인식하기 위한 설정 -->
+	<aop:aspectj-autoproxy/> 
+	
+
+	<!-- Spring JDBC 설정 방법 2. database.properties 세팅. -->
+	<!-- 위치정보를 알려주는 context:property-placeholder location= 사용. classpath: = resource폴더. --> 
+	<context:property-placeholder location="classpath:config/database.properties"/>
+	
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"> <!-- 스프링에게 먼저 알려주기. 나 이거 쓴다. -->
+		<property name="driverClassName" value="${driver}" /> 
+		<property name="url" value="${url}" />
+		<property name="username" value="${name}"/> 
+		<property name="password" value="${pw}"/> 
+	</bean>
+	
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	
+	<!-- Transaction 설정. 스프링이 밑에서 진행하는거라서 지점을 잡을수가 임의의 bean으로 잡음.. -->
+	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<!-- get으로 설정해놓은 select 메소드를 한정. 이것들과 다른 메서드들의 매서드 속성을 변경한것. -->
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+		<tx:attributes>
+		<tx:method name="get*" read-only="true"/>
+		<tx:method name="*"/>
+		</tx:attributes>
+	</tx:advice>
+	
+	<!-- 스프링에서 제공하는 설정이기 때문에 aspect로 advice로 매서드를 지정 적용하는 것이 불가능 하므로 advisor로 처리한다.-->
+	<aop:config>
+		<aop:pointcut id="txPointcut" expression="execution(* com.springproj.biz..*(..))" /> <!-- 전체 패키지의 전체 클래스를 감시한다. -->
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/>
+	</aop:config>
+	
+</beans>

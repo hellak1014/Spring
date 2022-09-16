@@ -1,8 +1,0 @@
-package ex04.springcontainer.di.constructor;
-
-public class Snippet {
-	public static void main(String[] args) {
-		SonySpeaker
-	}
-}
-

@@ -1,9 +1,0 @@
-package ex05.springcontainer.di.constructor;
-
-public interface Speaker {
-
-	void volumeUp();
-
-	void volumeDown();
-
-}

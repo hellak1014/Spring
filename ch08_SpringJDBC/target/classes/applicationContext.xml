@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+	<context:component-scan base-package="com.springproj.biz"/>
+	
+	
+	<!--  AOP annotation을 인식하기 위한 설정 -->
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+	
+	
+	 <!-- Spring JDBC 설정 방법 1. 
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"> 스프링에게 먼저 알려주기. 나 이거 쓴다.
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" /> setter 매서드를 호출해서 driverClassName에 전달 
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" /> 드라이버 이름
+		<property name="username" value="scott"/> 드라이버 이름
+		<property name="password" value="tiger"/> 드라이버 이름
+	</bean> -->
+	
+	<!-- Spring JDBC 설정 방법 2. database.properties 세팅. -->
+	<!-- 위치정보를 알려주는 context:property-placeholder location= 사용. classpath: = resource폴더. --> 
+	<context:property-placeholder location="classpath:config/database.properties"/>
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"> <!-- 스프링에게 먼저 알려주기. 나 이거 쓴다. -->
+		<property name="driverClassName" value="${driver}" /> 
+		<property name="url" value="${url}" />
+		<property name="username" value="${name}"/> 
+		<property name="password" value="${pw}"/> 
+	</bean>
+	
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	
+</beans>

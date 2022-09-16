@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+	<context:component-scan base-package="com.springproj.biz"/>
+	
+	<bean id="log" class="com.springproj.biz.common.LogAdvice"/>
+	<!-- <bean id="log" class="com.springproj.biz.common.Log4jAdvice"/> -->
+
+	<bean id="beforeAdvice" class="com.springproj.biz.common.BeforeAdvice"></bean>
+
+	<aop:config>
+		<aop:pointcut id="implPointcut" 
+				expression="execution(* com.springproj.biz.board..*Impl.*(..))" />
+		<aop:aspect ref="beforeAdvice">
+			<aop:before pointcut-ref="implPointcut" method="beforeLog"/>
+		</aop:aspect>
+	</aop:config>
+
+	<bean id="afterReturningAdvice" class="com.springproj.biz.common.AfterReturningAdvice"></bean>
+	<aop:config>
+		<aop:pointcut id="getPointcut" 
+				expression="execution(* com.springproj.biz.board..*Impl.get*(..))" />
+		<aop:aspect ref="afterReturningAdvice">
+			<aop:after-returning pointcut-ref="getPointcut" method="afterLog"
+					returning="returnObj"/>
+		</aop:aspect>
+	</aop:config>
+
+	<bean id="afterThrowAdvice" class="com.springproj.biz.common.AfterThrowAdvice"></bean>
+	<aop:config>
+		<aop:pointcut id="allPointcut" 
+				expression="execution(* com.springproj.biz.board..*Impl.*(..))" />
+		<aop:aspect ref="afterThrowAdvice">
+			<aop:after-throwing pointcut-ref="allPointcut" method="exceptionLog"
+					throwing="exception"/>
+		</aop:aspect>
+	</aop:config>
+	
+	<bean id="aroundAdvice" class="com.springproj.biz.common.AroundAdvice"></bean>
+	<aop:config>
+		<aop:pointcut id="aroundPointcut" 
+				expression="execution(* com.springproj.biz.board..*Impl.*(..))" />
+		<aop:aspect ref="aroundAdvice">
+			<aop:around pointcut-ref="aroundPointcut" method="aroundLog"/>
+		</aop:aspect>
+	</aop:config>
+
+</beans>
