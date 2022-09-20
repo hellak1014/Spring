@@ -1,9 +1,12 @@
 package com.springproj.biz.dao;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.springproj.biz.domain.BoardVO;
@@ -96,4 +99,26 @@ public class BoardDAO { // DAO(Data Access Object)
 		jdbcTemplate.update(BOARD_DELETE, seq);
 		
 	}
+	
+	class BoardRowMapper implements RowMapper<BoardVO>{
+
+		//select문을 sql에 넣고, sql이 데이터를 보내줬을때 작동이 된다.
+		
+		@Override
+		public BoardVO mapRow(ResultSet rs, int rowNum) throws SQLException {
+			BoardVO board = new BoardVO();
+			
+			board.setSeq(rs.getInt("seq"));
+			board.setTitle(rs.getString("title"));
+			board.setWriter(rs.getString("writer"));
+			board.setContent(rs.getString("content"));
+			board.setRegdate(rs.getDate("regdate"));
+			board.setCnt(rs.getInt("cnt"));
+			
+
+			return board;
+		}
+
+	}
+	
 }

@@ -6,6 +6,11 @@
 	</section>
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="C:\workspaces\spring\src\ch15_SpringMVC_Board_Exception"/>
+			<item value="C:\workspaces\spring\src\ch14_SpringMVC_Board_FileUpload"/>
+			<item value="C:\workspaces\spring\src\ch13_SpringMVC_Board_Search_2"/>
+			<item value="C:\workspaces\spring\src\ch13_SpringMVC_Board_Search"/>
+			<item value="C:\workspaces\spring\src\ch12_SpringMVC_Board_Annotation"/>
 			<item value="C:\workspaces\spring\src\ch11_SpringMVC_Board"/>
 			<item value="C:\workspaces\spring\src\ch09_AOP_Transaction"/>
 			<item value="C:\workspaces\spring\src\ch08_SpringJDBC"/>

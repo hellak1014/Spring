@@ -1,19 +1,25 @@
 package com.springproj.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.springproj.biz.domain.BoardVO;
 import com.springproj.biz.service.BoardService;
 
 
 @Controller
+@SessionAttributes("board") //컨트롤러 안에 있는 매서드들 중에서 model에다가 board라는 이름으로 저장하는 데이터가 있다면, 모델뿐만 아니라 세션에도 저장해줘
 public class BoardController{
 //annotation을 하면서 추상매서드 형으로 윗 부모를 상속해오지 않고도 bean이 생성되었기 때문에 servlet에서 bean을 생성하지 않아도 된다. 
 //그리고 직관적인 이름으로 handelRequest를 변경.
@@ -89,11 +95,33 @@ public class BoardController{
 		return "redirect:getBoardList.do";
 	}
 	
+	//검색 조건 목록 설정
+	//ModelAttribute : 매서드 위에 붙었을때 괄호 안에 이름을 붙여주면 괄호 안의 이름이 key, 리턴값을 value로 놓고 동작한다.
+	// 왜냐하면 model이 값을 받을때 mav.addobject (key, value) 형식으로 받았기 때문이다.
+	@ModelAttribute("conditionMap") 
+	public Map<String, String> searchConditionMap() {			//리턴값은 conditionmap이므로 그 값을 리턴하고있다. 
+		Map<String, String> conditionMap = new HashMap<String, String>();
+		
+		conditionMap.put("제목", "TITLE");
+		conditionMap.put("내용", "CONTENT");
+		
+		return conditionMap;
+	}
+	
+	
+	//글 목록 검색 처리
 	@RequestMapping(value="/getBoardList.do")
-	public String getBoardList(Model model) { //커맨드객체에게 view와 controller에서 공유하는 객체를 공유하도록 요청.
+	public String getBoardList(@RequestParam (value = "searchCondition", defaultValue = "TITLE", required = false) String condition,
+								@RequestParam (value = "searchKeyword", defaultValue = "", required = false) String keyword,
+											Model model) { //커맨드객체에게 view와 controller에서 공유하는 객체를 공유하도록 요청.
+		//@RequestParam : requset.getParameter 와 같은 동작. 값을 변수로 받아올수있다. 3가지 자식설정 가능.
+		//value - 전달 받을 이름. 뒤에 있는 String으로 저장된다. defaultValue - 값이 없다면 제목이 디폴트. required - 올수도 있고 안올수도 있다.
 		//System.out.println("글 목록 검색 처리");
 		
 		//참조변수로 getServiceList 불러오기. 
+		
+		System.out.println("검색 조건 : " + condition);
+		System.out.println("검색 단어 : " + keyword);
 		
 		List<BoardVO> list = BoardService.getServiceList(); //비즈니스 로직과 연동되어있는 코드이므로 지우면 안됨
 		
@@ -120,7 +148,7 @@ public class BoardController{
 	
 	
 	@RequestMapping(value="/updateBoard.do")
-	public String updateBoardProc(BoardVO board) { //매개변수로만 요청 
+	public String updateBoardProc(@ModelAttribute("board") BoardVO vo) { //매개변수로만 요청 
 		//System.out.println("글 수정 처리");
 		
 		/*
@@ -134,7 +162,7 @@ public class BoardController{
 		 * board.setContent(content);
 		 */
 		
-		BoardService.updateService(board);
+		BoardService.updateService(vo);
 		
 		/*
 		 * ModelAndView mav = new ModelAndView();

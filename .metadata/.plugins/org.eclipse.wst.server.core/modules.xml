@@ -3,5 +3,10 @@
   <module moduleId="org.eclipse.jst.jee.server:ch10_SpringMVC" serverId="Tomcat v9.0 Server at localhost"/>
   <module moduleId="org.eclipse.jst.jee.server:ch01_Webapp" serverId="Tomcat v9.0 Server at localhost"/>
   <module moduleId="org.eclipse.jst.jee.server:ch12_SpringMVC_Board_Annotation" serverId="Tomcat v9.0 Server at localhost"/>
+  <module moduleId="org.eclipse.jst.jee.server:ch13_SpringMVC_Board_Search_2" serverId="Tomcat v9.0 Server at localhost"/>
+  <module moduleId="org.eclipse.jst.jee.server:ch16_SpringMVC_Board_Internationalization" serverId="Tomcat v9.0 Server at localhost"/>
+  <module moduleId="org.eclipse.jst.jee.server:ch15_SpringMVC_Board_Exception" serverId="Tomcat v9.0 Server at localhost"/>
+  <module moduleId="org.eclipse.jst.jee.server:ch14_SpringMVC_Board_FileUpload" serverId="Tomcat v9.0 Server at localhost"/>
+  <module moduleId="org.eclipse.jst.jee.server:ch13_SpringMVC_Board_Search" serverId="Tomcat v9.0 Server at localhost"/>
   <module moduleId="org.eclipse.jst.jee.server:ch11_SpringMVC_Board" serverId="Tomcat v9.0 Server at localhost"/>
 </modules>
