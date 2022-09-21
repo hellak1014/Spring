@@ -11,6 +11,8 @@ C:\workspaces\spring\src\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1
 \ch14_SpringMVC_Board_FileUpload\src\main\java
 C:\workspaces\spring\src\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\880174626.index
 \ch13_SpringMVC_Board_Search_2\src\main\java
+C:\workspaces\spring\src\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2609909779.index
+\ch17_SpringMVC_Mybatis_Connection\src\main\java
 C:\workspaces\spring\src\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1189598775.index
 \ch13_SpringMVC_Board_Search_2\src\main\java
 C:\workspaces\spring\src\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2086936859.index
@@ -37,8 +39,12 @@ C:\workspaces\spring\src\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3
 \ch12_SpringMVC_Board_Annotation\src\main\java
 C:\workspaces\spring\src\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\849914537.index
 \ch16_SpringMVC_Board_Internationalization\src\main\java
+C:\workspaces\spring\src\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3281012786.index
+\ch17_SpringMVC_Mybatis_Connection\src\main\java
 C:\workspaces\spring\src\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2781846745.index
 \ch05_Proj_Layer_BusinessComponent\src\main\java
+C:\workspaces\spring\src\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1106603468.index
+\ch17_SpringMVC_Mybatis_Connection\src\main\java
 C:\workspaces\spring\src\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3629707168.index
 \ch16_SpringMVC_Board_Internationalization\src\main\java
 C:\workspaces\spring\src\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2512557385.index

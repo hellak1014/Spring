@@ -6,6 +6,8 @@
 	</section>
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="C:\workspaces\spring\src\ch17_SpringMVC_Mybatis_Connection"/>
+			<item value="C:\workspaces\spring\src\ch16_SpringMVC_Board_Internationalization"/>
 			<item value="C:\workspaces\spring\src\ch15_SpringMVC_Board_Exception"/>
 			<item value="C:\workspaces\spring\src\ch14_SpringMVC_Board_FileUpload"/>
 			<item value="C:\workspaces\spring\src\ch13_SpringMVC_Board_Search_2"/>
@@ -19,8 +21,6 @@
 			<item value="C:\workspaces\spring\src\ch06_AOP"/>
 			<item value="C:\workspaces\spring\src\ch05_Proj_Layer_BusinessComponent"/>
 			<item value="C:\workspaces\spring\src\ch04_DI_Annotation"/>
-			<item value="C:\workspaces\spring\src\ch03_DI_Collection"/>
-			<item value="C:\workspaces\spring\src\ch02_DI"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
